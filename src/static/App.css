@@ -1,33 +1,11 @@
-.App {
-  text-align: center;
+.container {
+  display: grid; /* for grid display; might want to just do flexboxes idk */
+  grid-template-columns: [first] 50% [midpoint] 50% [last];
+  grid-template-rows: [header-start] 20% [header-end row2-start] 30% [row2-end row3-start] 50% [last-line];
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#avi {
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
 }
