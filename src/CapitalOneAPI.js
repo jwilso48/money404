@@ -62,20 +62,6 @@ async function getPurchasesByAccountId(accoundId, callback) {
     });
 }
 
-// accounts.forEach(account => {
-//     accountPromises.push(new Promise((resolve, reject) => {
-//         getTransactionHistoryByAccountId(account._id, (err, accountData) => {
-//             if (err) {
-//                 reject(err);
-//             }
-//             customerData.accounts.push(accountData);
-//             resolve();
-//         });
-//     }));
-// });
-// await Promise.all(accountPromises);
-// return callback(null, customerData);
-
 /**
  * Get a list of transfers for the specified account
  * @param {string} accoundId the id of the account to query
