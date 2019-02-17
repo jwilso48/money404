@@ -83,12 +83,14 @@ it('returns a list of transactions grouped by date for the given customer', () =
     let expected1 = [{
             'cost': -4035,
             'account': 'Credit Card',
-            'name': 'Starbucks'
+            'name': 'Starbucks',
+            'date': new Date('2019-2-16')
         },
         {
             'cost': 5000,
             'account': 'Checking',
-            'name': 'deposit'
+            'name': 'deposit',
+            'date': new Date('2019-2-16')
         }
     ]
     let actual1 = getTransactionsByDay(testCustomer, new Date('2-16-2019'));
@@ -97,8 +99,13 @@ it('returns a list of transactions grouped by date for the given customer', () =
     let expected2 = [{
         'cost': -32500,
         'account': 'Checking',
-        'name': 'withdrawal'
+        'name': 'withdrawal',
+        'date': new Date('2019-2-10')
     }, ]
     let actual2 = getTransactionsByDay(testCustomer, new Date('2-10-2019'));
     expect(actual2.sort()).toEqual(expected2.sort());
+
+    let expected3 = expected1.concat(expected2);
+    let actual3 = getTransactionsByDay(testCustomer);
+    expect(actual3.sort()).toEqual(expected3.sort());
 });

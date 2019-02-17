@@ -1,5 +1,6 @@
 .container {
-  display: grid; /* for grid display; might want to just do flexboxes idk */
+  display: grid;
+  /* for grid display; might want to just do flexboxes idk */
   grid-template-columns: [first] 50% [midpoint] 50% [last];
   grid-template-rows: [header-start] 20% [header-end row2-start] 30% [row2-end row3-start] 50% [last-line];
   grid-template-areas:
@@ -8,7 +9,8 @@
     "actions graph";
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  justify-items: left; /* wanna change this to `stretch` later*/
+  justify-items: left;
+  /* wanna change this to `stretch` later*/
   justify-content: stretch;
   padding: 10px
 }
@@ -62,4 +64,9 @@
   grid-column-end: last;
   grid-row-start: row3-start;
   grid-row-end: last-line;
+}
+
+#RecentActions {
+  overflow: scroll;
+  height: 250px;
 }

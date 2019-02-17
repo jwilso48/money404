@@ -13,8 +13,14 @@ function formatDateStr(date) {
  * @param {object} customerData - the Capital One customer data object from which to pull transactions
  * @param {Date} date - the date for which to pull transactions
  */
-function getTransactionsByDay(customerData, date) {
-    let dateStr = formatDateStr(date);
+function getTransactionsByDay(customerData, date = null) {
+    let dateStr;
+    try {
+        dateStr = formatDateStr(date);
+    } catch (err) {
+        dateStr = null;
+    }
+
     let normalFields = [{
             'name': 'withdrawals',
             'date_field': 'transaction_date',
@@ -40,21 +46,23 @@ function getTransactionsByDay(customerData, date) {
     customerData.accounts.forEach(account => {
         normalFields.forEach(field => {
             account[field.name].forEach(transaction => {
-                if (transaction[field.date_field] === dateStr) {
+                if (dateStr == null || transaction[field.date_field] === dateStr) {
                     transactions.push({
                         'cost': transaction.amount * field.sign,
                         'account': account.account.type,
-                        'name': field.name.slice(0, -1)
+                        'name': field.name.slice(0, -1),
+                        'date': new Date(transaction[field.date_field])
                     });
                 }
             });
         });
         account['purchases'].forEach(transaction => {
-            if (transaction['purchase_date'] === dateStr) {
+            if (dateStr == null || transaction['purchase_date'] === dateStr) {
                 transactions.push({
                     'cost': transaction.amount * -1,
                     'account': account.account.type,
-                    'name': transaction.merchant_name
+                    'name': transaction.merchant_name,
+                    'date': new Date(transaction['purchase_date'])
                 })
             }
         })

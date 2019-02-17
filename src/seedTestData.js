@@ -413,7 +413,7 @@ function seedTestData(callback) {
                                     if (err) {
                                         return callback(err);
                                     }
-                                    return callback(null, 201);
+                                    return callback(null, customerId);
                                 });
                             });
                         });
