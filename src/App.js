@@ -8,6 +8,7 @@ import StatsBox from "./components/StatsBox";
 import { getCustomerDataById } from "./CapitalOneAPI";
 import { seedTestData } from "./seedTestData";
 import { ClipLoader } from "react-spinners";
+import { getGraphData } from "./graphData";
 
 class App extends Component {
   constructor(props) {
@@ -15,11 +16,11 @@ class App extends Component {
     this.state = {
       customer: {
         first_name: "Johnny",
-        last_name: "Test",
-        accounts: []
+        last_name: "Test"
       },
       accounts: [],
-      is_loading: true
+      is_loading: true,
+      projection_hist: []
     };
   }
 
@@ -27,10 +28,13 @@ class App extends Component {
     seedTestData((err, id) => {
       getCustomerDataById(id, (err, customerData) => {
         this.setState({
-          first_name: customerData.customer.first_name,
-          last_name: customerData.customer.last_name,
+          customer: {
+            first_name: customerData.customer.first_name,
+            last_name: customerData.customer.last_name
+          },
           accounts: customerData.accounts,
-          is_loading: false
+          is_loading: false,
+          projection_hist: [getGraphData(customerData)]
         });
       });
     });
@@ -56,7 +60,10 @@ class App extends Component {
         </div>{" "}
         <ActionsBox className="actions-box" />
         <StatsBox className="stats-box" accounts={this.state.accounts} />{" "}
-        <GraphBox className="graph-box" accounts={this.state.accounts} />{" "}
+        <GraphBox
+          className="graph-box"
+          graphData={this.state.projection_hist[0]}
+        />{" "}
       </div>
     );
   }
