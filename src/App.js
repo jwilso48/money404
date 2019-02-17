@@ -58,7 +58,7 @@ class App extends Component {
           <img width="10px" />
           <img src={avi} alt="avi" id="avi" />
         </div>{" "}
-        <ActionsBox className="actions-box" />
+        <ActionsBox className="actions-box" accounts={this.state.accounts} />{" "}
         <StatsBox className="stats-box" accounts={this.state.accounts} />{" "}
         <GraphBox
           className="graph-box"
