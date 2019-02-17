@@ -16,7 +16,6 @@ class StatsBox extends Component {
   calculateDebt(actions) {
     let debt = 0;
     actions.forEach(action => {
-      console.log(action);
       if (action.name === "loan") {
         debt += action.cost;
       }
@@ -41,7 +40,6 @@ class StatsBox extends Component {
     });
     let actions = getTransactionsByDay(this.props);
     this.setState({ actions: actions });
-    console.log(this.state);
     this.calculateDebt(actions);
   }
 
