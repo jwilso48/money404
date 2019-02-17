@@ -1,3 +1,7 @@
+* {
+  /* font-family: 'Courier New', Courier, monospace; */
+}
+
 .container {
   display: grid;
   /* for grid display; might want to just do flexboxes idk */

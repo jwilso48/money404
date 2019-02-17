@@ -1,5 +1,23 @@
 .tab-bar {
+  list-style: none;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-evenly;
+  justify-content: flex-end;
+  background: deepskyblue;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+}
+
+.tab-bar a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: white;
+  /* background: aquamarine; */
+}
+
+.tab-bar a:hover {
+  background: #00b7f5;
 }
