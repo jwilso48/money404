@@ -9,7 +9,7 @@
     "actions graph";
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  justify-items: left;
+  justify-items: stretch;
   /* wanna change this to `stretch` later*/
   justify-content: stretch;
   padding: 10px

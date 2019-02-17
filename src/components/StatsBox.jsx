@@ -55,16 +55,18 @@ class StatsBox extends Component {
     });
     return (
       <div className="StatsBox">
-        <h1>Finances</h1>
-        <div id="Finances">
-          <p>Checking: {this.formatCurrency(this.state.checking)}</p>
-          <p>Savings: {this.formatCurrency(this.state.savings)}</p>
-          <p>Debt: {this.formatCurrency(this.state.debt)}</p>
+        <h1>Finances and Recent Actions</h1>
+        <div className="finances-and-recent-actions">
+          <div id="Finances">
+            <p>Checking: {this.formatCurrency(this.state.checking)}</p>
+            <p>Savings: {this.formatCurrency(this.state.savings)}</p>
+            <p>Debt: {this.formatCurrency(this.state.debt)}</p>
+          </div>
+          <div id="RecentActions">
+            <ul>{actions}</ul>
+          </div>
         </div>
-        <div id="RecentActions">
-          <ul>{actions}</ul>
-        </div>
-      </div>
+     </div>
     );
   }
 }
