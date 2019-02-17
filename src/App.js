@@ -43,19 +43,20 @@ class App extends Component {
     return (
       <div className="container">
         <div className="title">
-          <h1 id="title">Money404</h1>
-        </div>
-        {/* shows the name and avi of the user */}
+          <h1 id="title"> Money404 </h1>{" "}
+        </div>{" "}
+        {/* shows the name and avi of the user */}{" "}
         <div className="nametag">
           <h1 id="user-name">
-            {this.state.customer.first_name} {this.state.customer.last_name}
-          </h1>
+            {" "}
+            {this.state.customer.first_name} {this.state.customer.last_name}{" "}
+          </h1>{" "}
           <img width="10px" />
           <img src={avi} alt="avi" id="avi" />
-        </div>
+        </div>{" "}
         <ActionsBox className="actions-box" />
-        <StatsBox className="stats-box" accounts={this.state.accounts} />
-        <GraphBox className="graph-box" />
+        <StatsBox className="stats-box" accounts={this.state.accounts} />{" "}
+        <GraphBox className="graph-box" accounts={this.state.accounts} />{" "}
       </div>
     );
   }

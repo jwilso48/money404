@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
+import { getGraphData } from "../graphData";
 
 const data = [
   { date: new Date("2-1-19"), assets: 34167, debts: 43266 },
@@ -16,7 +17,7 @@ class GraphBox extends Component {
   render() {
     return (
       <div className="graph-box">
-        <LineChart width={400} height={300} data={data}>
+        <LineChart width={400} height={300} data={getGraphData(this.props)}>
           <Line type="monotone" dataKey="assets" stroke="#8884d8" />
           <Line type="monotone" dataKey="debts" stroke="#DC143C" />
           <CartesianGrid stroke="#ccc" />
