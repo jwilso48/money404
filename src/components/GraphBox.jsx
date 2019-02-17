@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
+import {
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  ResponsiveContainer
+} from "recharts";
 
 // const data = [
 //   { date: new Date("2-1-19"), assets: 34167, debts: 43266 },
@@ -13,16 +20,25 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
 // ];
 
 class GraphBox extends Component {
+  formatCurrency(cents) {
+    if (cents < 0) {
+      return "-$" + cents / -100.0;
+    }
+    return "$" + cents / 100.0;
+  }
+
   render() {
     return (
       <div className="graph-box">
-        <LineChart width={400} height={300} data={this.props.graphData}>
-          <Line type="monotone" dataKey="assets" stroke="#8884d8" />
-          <Line type="monotone" dataKey="debts" stroke="#DC143C" />
-          <CartesianGrid stroke="#ccc" />
-          <XAxis dataKey="date" />
-          <YAxis />
-        </LineChart>
+        <ResponsiveContainer height="100%" width="90%">
+          <LineChart data={this.props.graphData}>
+            <Line type="monotone" dataKey="assets" stroke="#8884d8" />
+            <Line type="monotone" dataKey="debts" stroke="#DC143C" />
+            <CartesianGrid stroke="#ccc" />
+            <XAxis dataKey="date" />
+            <YAxis tickFormatter={this.formatCurrency} />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
     );
   }
