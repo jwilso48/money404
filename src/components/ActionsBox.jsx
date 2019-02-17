@@ -13,12 +13,12 @@ class ActionsBox extends Component {
         spend: [],
         save: [],
         borrow: [
-          { name: "Take out a payday loan", cost: -500 },
-          { name: "Neglect to pay off your student loans", cost: -500 }
+          { name: "Take out a payday loan", cost: -50000 },
+          { name: "Neglect to pay off your student loans", cost: -50000 }
         ],
         invest: [
-          { name: "Invest in an untested cryptocurrency", cost: -300 },
-          { name: "Purchase random stocks on Robinhood", cost: -500 }
+          { name: "Invest in an untested cryptocurrency", cost: -30000 },
+          { name: "Purchase random stocks on Robinhood", cost: -50000 }
         ]
       }
     };

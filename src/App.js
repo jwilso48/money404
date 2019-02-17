@@ -18,8 +18,7 @@ class App extends Component {
         last_name: "Test"
       },
       accounts: [],
-      is_loading: true,
-      projection_hist: []
+      is_loading: true
     };
   }
 
@@ -41,7 +40,17 @@ class App extends Component {
 
   render() {
     if (this.state.is_loading) {
-      return <ClipLoader />;
+      return (
+        <ClipLoader
+          size={150}
+          css={`
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          `}
+        />
+      );
     }
     return (
       <div className="container">
