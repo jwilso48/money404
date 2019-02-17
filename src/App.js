@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import logo from './static/logo.svg';
 import "./static/App.css";
 import ActionsBox from "./components/ActionsBox";
 import GraphBox from "./components/GraphBox";
