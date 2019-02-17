@@ -7,19 +7,27 @@ import avi from './static/avi.jpg';
 import StatsBox from './components/StatsBox';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      customer: {
+        first_name: "Fatimah",
+        last_name: "Warner"
+      }
+    };
+  }
   render() {
     return (
       <div className="container">
-        <header>
-          <div className="title">
-            <h1>Money404</h1>
-          </div>
-          {/* shows the name and avi of the user */}
-          <div className="nametag">
-            <h3>Alice User</h3>
-            <img src={avi} alt="avi" id="avi" />
-          </div>
-        </header>
+        <div className="title">
+          <h1 id="title">Money404</h1>
+        </div>
+        {/* shows the name and avi of the user */}
+        <div className="nametag">
+          <h1 id="user-name">{this.state.customer.first_name} {this.state.customer.last_name}</h1>
+          <img width="10px" />
+          <img src={avi} alt="avi" id="avi" />
+        </div>
         <ActionsBox className="actions-box" />
         <StatsBox className="stats-box" />
         <GraphBox className="graph-box" />
