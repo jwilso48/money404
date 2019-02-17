@@ -41,10 +41,23 @@ async function getDepositsByAccountId(accoundId, callback) {
  * @param {function} callback - a function of the form (err, data) to handle the result of the get request
  */
 async function getPurchasesByAccountId(accoundId, callback) {
-    get(`/accounts/${accoundId}/purchases`, (err, purchases) => {
+    get(`/accounts/${accoundId}/purchases`, async (err, purchases) => {
         if (err) {
             return callback(err);
         }
+        let merchantPromises = [];
+        purchases.forEach(purchase => {
+            merchantPromises.push(new Promise((resolve, reject) => {
+                get(`/merchants/${purchase.merchant_id}`, async (err, merchant) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    purchase.merchant_name = merchant.name;
+                    resolve();
+                });
+            }));
+        });
+        await Promise.all(merchantPromises);
         return callback(null, purchases);
     });
 }
