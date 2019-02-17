@@ -1,0 +1,65 @@
+.container {
+  display: grid; /* for grid display; might want to just do flexboxes idk */
+  grid-template-columns: [first] 50% [midpoint] 50% [last];
+  grid-template-rows: [header-start] 20% [header-end row2-start] 30% [row2-end row3-start] 50% [last-line];
+  grid-template-areas:
+    "title nametag"
+    "actions stats"
+    "actions graph";
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  justify-items: left; /* wanna change this to `stretch` later*/
+  justify-content: stretch;
+  padding: 10px
+}
+
+#title {
+  text-align: left;
+  align-self: stretch;
+  font-size: 300%;
+}
+
+#avi {
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+}
+
+.title {
+  grid-area: title;
+  place-self: stretch;
+  justify-self: top;
+  font-size: 100%;
+}
+
+.nametag {
+  /* grid styling */
+  grid-area: nametag;
+  place-self: stretch;
+  /* flexbox styling */
+  display: flex;
+  flex-direction: rtl;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-content: space-around;
+  align-items: center;
+  text-align: right;
+}
+
+.actions-box {
+  grid-area: actions;
+  grid-row-start: row2-start;
+  grid-row-end: last-line;
+}
+
+.stats-box {
+  grid-area: stats;
+}
+
+.graph-box {
+  grid-area: graph;
+  grid-column-start: midpoint;
+  grid-column-end: last;
+  grid-row-start: row3-start;
+  grid-row-end: last-line;
+}
