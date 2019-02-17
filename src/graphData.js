@@ -13,7 +13,11 @@ function getGraphData(customerData) {
             startingDebts += loan.amount;
         });
     });
-    console.log(startingDebts);
+    customerData.accounts.forEach(account => {
+        account.loans.forEach(loan => {
+            startingDebts += loan.amount;
+        });
+    });
     return graphData;
 }
 
